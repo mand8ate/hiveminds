@@ -6,6 +6,8 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Koulen } from "next/font/google";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { navigationItemsService, navigationItems } from "@/constants";
 
 const koulen = Koulen({ subsets: ["latin"], weight: ["400"] });
 
@@ -51,6 +53,25 @@ const itemVariants = {
   },
 };
 
+const dropdownVariants = {
+  closed: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  open: {
+    height: "auto",
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      staggerChildren: 0.1,
+      when: "beforeChildren",
+    },
+  },
+};
+
 const lineVariants = {
   closed: {
     rotate: 0,
@@ -71,6 +92,8 @@ const lineVariants = {
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
+  const [companyDropdownOpen, setCompanyDropdownOpen] = useState(false);
   const { setTheme, theme } = useTheme();
 
   useEffect(() => {
@@ -86,6 +109,16 @@ const HamburgerMenu = () => {
       body.style.overflow = "";
     };
   }, [isOpen]);
+
+  const toggleServiceDropdown = (e) => {
+    e.preventDefault();
+    setServiceDropdownOpen(!serviceDropdownOpen);
+  };
+
+  const toggleCompanyDropdown = (e) => {
+    e.preventDefault();
+    setCompanyDropdownOpen(!companyDropdownOpen);
+  };
 
   return (
     <div className="z-50 m-4 flex h-12 w-12 flex-col items-center justify-center overflow-visible p-4">
@@ -144,6 +177,7 @@ const HamburgerMenu = () => {
               variants={itemVariants}
             />
 
+            {/* Home Link */}
             <motion.div
               className="my-2 text-xl sm:my-4"
               variants={itemVariants}
@@ -151,40 +185,106 @@ const HamburgerMenu = () => {
               <Link href="/">Home</Link>
             </motion.div>
 
+            {/* Service Dropdown */}
             <motion.div
-              className="my-2 text-xl sm:my-4"
+              className="my-2 flex w-full flex-col items-center text-xl sm:my-4"
               variants={itemVariants}
             >
-              <Link href="/service">Service</Link>
+              <button
+                onClick={toggleServiceDropdown}
+                className="flex items-center justify-center gap-1"
+              >
+                Service
+                {serviceDropdownOpen ? (
+                  <ChevronUp size={18} />
+                ) : (
+                  <ChevronDown size={18} />
+                )}
+              </button>
+
+              <AnimatePresence>
+                {serviceDropdownOpen && (
+                  <motion.div
+                    className="mt-2 flex w-full max-w-xs flex-col items-center"
+                    variants={dropdownVariants}
+                    initial="closed"
+                    animate="open"
+                    exit="closed"
+                  >
+                    {navigationItemsService.map((item) => (
+                      <motion.div
+                        key={item.title}
+                        variants={itemVariants}
+                        className="my-1 text-center text-base"
+                      >
+                        <Link href={item.href} onClick={() => setIsOpen(false)}>
+                          {item.title}
+                        </Link>
+                        <p className="text-xs text-muted-foreground">
+                          {item.description}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
 
+            {/* Projects Link */}
             <motion.div
               className="my-2 text-xl sm:my-4"
               variants={itemVariants}
             >
               <Link href="/projects">Projects</Link>
             </motion.div>
-            <motion.div variants={itemVariants}>
-              <h1 className="mt-2 text-xl sm:mb-2 sm:mt-4">Company</h1>
-              <motion.div
-                variants={itemVariants}
-                className="text-md text-center sm:mb-2"
+
+            {/* Company Dropdown */}
+            <motion.div
+              className="my-2 flex w-full flex-col items-center text-xl sm:my-4"
+              variants={itemVariants}
+            >
+              <button
+                onClick={toggleCompanyDropdown}
+                className="flex items-center justify-center gap-1"
               >
-                <Link href="/company/team">-Team-</Link>
-              </motion.div>
-              <motion.div
-                variants={itemVariants}
-                className="text-md text-center sm:mb-2"
-              >
-                <Link href="/company/vmv">-VMV-</Link>
-              </motion.div>
-              <motion.div
-                variants={itemVariants}
-                className="text-md mb-2 text-center sm:mb-4"
-              >
-                <Link href="/company">-Company-</Link>
-              </motion.div>
+                Company
+                {companyDropdownOpen ? (
+                  <ChevronUp size={18} />
+                ) : (
+                  <ChevronDown size={18} />
+                )}
+              </button>
+
+              <AnimatePresence>
+                {companyDropdownOpen && (
+                  <motion.div
+                    className="mt-2 flex w-full max-w-xs flex-col items-center"
+                    variants={dropdownVariants}
+                    initial="closed"
+                    animate="open"
+                    exit="closed"
+                  >
+                    {/* Use the navigationItems from constants for Company dropdown items */}
+                    {navigationItems.map((item) => (
+                      <motion.div
+                        key={item.title}
+                        variants={itemVariants}
+                        className="my-1 text-center text-base"
+                      >
+                        <Link href={item.href} onClick={() => setIsOpen(false)}>
+                          {item.title}
+                        </Link>
+                        <p className="text-xs text-muted-foreground">
+                          {item.description}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
+
+            {/* Contact Link */}
             <motion.div
               className="my-4 text-xl sm:my-4"
               variants={itemVariants}
