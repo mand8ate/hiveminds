@@ -110,12 +110,12 @@ const HamburgerMenu = () => {
     };
   }, [isOpen]);
 
-  const toggleServiceDropdown = (e) => {
+  const toggleServiceDropdown = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setServiceDropdownOpen(!serviceDropdownOpen);
   };
 
-  const toggleCompanyDropdown = (e) => {
+  const toggleCompanyDropdown = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setCompanyDropdownOpen(!companyDropdownOpen);
   };
