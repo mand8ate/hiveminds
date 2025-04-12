@@ -61,7 +61,8 @@ export default function Navigation() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Service</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[250px] gap-3 p-4 md:w-[350px] md:grid-cols-2 lg:w-[450px] ">
+                {/* Match the width and layout of the Company dropdown */}
+                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[600px]">
                   {navigationItemsService.map((navigationItems) => (
                     <ListItem
                       key={navigationItems.title}
@@ -84,7 +85,7 @@ export default function Navigation() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Company</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-3 lg:w-[600px] ">
+                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[600px]">
                   {navigationItems.map((navigationItems) => (
                     <ListItem
                       key={navigationItems.title}
