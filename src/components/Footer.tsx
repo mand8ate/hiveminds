@@ -160,7 +160,12 @@ export default function Footer({ root }: { root?: boolean }) {
             {/* Contact and Download Cards - Added more gap from navigation */}
             <div className="flex w-full flex-col justify-center gap-6 md:flex-row lg:gap-8">
               {/* Contact Card */}
-              <div className="flex w-full flex-col items-center rounded-lg bg-gray-200 p-4 text-gray-800">
+              <a
+                href="https://hiveminds.co.jp/contact"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full flex-col items-center rounded-lg bg-gray-200 p-4 text-gray-800 transition-transform hover:scale-105 cursor-pointer"
+              >
                 <div className="mb-3 flex items-center justify-end gap-4">
                   <h3 className="text-lg font-bold text-black">CONTACT</h3>
                   <Mail className="h-12 w-12 text-gray-700" />
@@ -173,10 +178,15 @@ export default function Footer({ root }: { root?: boolean }) {
                     <span className="text-sm text-white">→</span>
                   </div>
                 </div>
-              </div>
+              </a>
 
               {/* Download Card */}
-              <div className="flex w-full flex-col items-center rounded-lg bg-gray-200 p-4 text-gray-800">
+              <a
+                href="https://saiyoushindan.com/whitepaper"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full flex-col items-center rounded-lg bg-gray-200 p-4 text-gray-800 transition-transform hover:scale-105 cursor-pointer"
+              >
                 <div className="mb-3 flex items-center justify-end gap-4">
                   <h3 className="text-lg font-bold text-black">DOWNLOAD</h3>
                   <FileText className="h-12 w-12 text-gray-700" />
@@ -189,7 +199,7 @@ export default function Footer({ root }: { root?: boolean }) {
                     <span className="text-sm text-white">→</span>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
