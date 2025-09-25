@@ -61,7 +61,7 @@ export default function Footer({ root }: { root?: boolean }) {
                   <ul className="space-y-3 text-sm">
                     <li>
                       <Link
-                        href="/"
+                        href="https://hiveminds.co.jp/"
                         className="text-gray-300 transition-colors hover:text-white"
                       >
                         Home
@@ -138,7 +138,7 @@ export default function Footer({ root }: { root?: boolean }) {
                     </li>
                     <li>
                       <Link
-                        href="/about-us"
+                        href="https://hiveminds.co.jp/company/vmv"
                         className="text-gray-300 transition-colors hover:text-white"
                       >
                         VMV
@@ -164,7 +164,7 @@ export default function Footer({ root }: { root?: boolean }) {
                 href="https://hiveminds.co.jp/contact"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-full flex-col items-center rounded-lg bg-gray-200 p-4 text-gray-800 transition-transform hover:scale-105 cursor-pointer"
+                className="flex w-full cursor-pointer flex-col items-center rounded-lg bg-gray-200 p-4 text-gray-800 transition-transform hover:scale-105"
               >
                 <div className="mb-3 flex items-center justify-end gap-4">
                   <h3 className="text-lg font-bold text-black">CONTACT</h3>
@@ -185,7 +185,7 @@ export default function Footer({ root }: { root?: boolean }) {
                 href="https://saiyoushindan.com/whitepaper"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-full flex-col items-center rounded-lg bg-gray-200 p-4 text-gray-800 transition-transform hover:scale-105 cursor-pointer"
+                className="flex w-full cursor-pointer flex-col items-center rounded-lg bg-gray-200 p-4 text-gray-800 transition-transform hover:scale-105"
               >
                 <div className="mb-3 flex items-center justify-end gap-4">
                   <h3 className="text-lg font-bold text-black">DOWNLOAD</h3>
